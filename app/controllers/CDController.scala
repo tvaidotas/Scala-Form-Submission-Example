@@ -8,11 +8,15 @@ import play.api.mvc._
 class CDController @Inject()(cc: ControllerComponents) extends AbstractController(cc) with play.api.i18n.I18nSupport {
 
   def showCDForm() = Action { implicit request: Request[AnyContent] =>
-    Ok("Nothing to see yet")
+    Ok(views.html.submitCD(CD.createCDForm))
   }
 
   def submitCD = Action { implicit request: Request[AnyContent] =>
-    Ok("Nothing to return yet")
+    CD.createCDForm.bindFromRequest.fold({ formWithErrors =>
+      BadRequest(views.html.submitCD(formWithErrors))
+    }, { cd =>
+      Ok(cd.toString())
+    })
   }
 
 }

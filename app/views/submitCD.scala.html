@@ -3,7 +3,7 @@
 
 @main("Submit CD") {
 
-    @helper.form(routes.CD.submitCD()) {
+    @helper.form(routes.CDController.submitCD()) {
         @helper.inputText(form("name"), 'id -> "CDName", 'class -> "InputField", '_showConstraints -> false)
         @helper.inputText(form("price"), 'id -> "CDPrice", 'class -> "InputField", '_showConstraints -> false)
         <button type="submit">Create CD</button>
